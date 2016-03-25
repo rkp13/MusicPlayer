@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="musicpl.rkp.com.musicplayer">
+
+    <uses-sdk
+        android:minSdkVersion="11"
+        android:targetSdkVersion="19" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="musicpl.rkp.com.musicplayer.MainActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="musicpl.rkp.com.musicplayer.AudioPlayerActivity"
+            android:excludeFromRecents="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <service
+            android:name="musicpl.rkp.com.musicplayer.service.SongService"
+            android:exported="true" 
+            android:enabled="true"/>
+
+        <receiver android:name="musicpl.rkp.com.musicplayer.receiver.NotificationBroadcast" >
+            <intent-filter>
+                <action android:name="musicpl.rkp.com.musicplayer.delete" />
+                <action android:name="musicpl.rkp.com.musicplayer.pause" />
+                <action android:name="musicpl.rkp.com.musicplayer.next" />
+                <action android:name="musicpl.rkp.com.musicplayer.play" />
+                <action android:name="musicpl.rkp.com.musicplayer.previous" />
+                <action android:name="android.intent.action.MEDIA_BUTTON" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+</manifest>
